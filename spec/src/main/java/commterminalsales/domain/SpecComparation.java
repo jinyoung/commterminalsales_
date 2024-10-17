@@ -18,10 +18,8 @@ public class SpecComparation {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String productId;
-
     @ElementCollection
-    private List<String> options;
+    private List<Comparation> comparations;
 
     private String customerId;
 
@@ -36,13 +34,6 @@ public class SpecComparation {
             SpecComparationRepository.class
         );
         return specComparationRepository;
-    }
-
-    public void 스펙비교저장() {
-        //implement business logic here:
-
-        SpecCompared specCompared = new SpecCompared(this);
-        specCompared.publishAfterCommit();
     }
 }
 //>>> DDD / Aggregate Root

@@ -26,7 +26,7 @@ public class Spec {
     @Embedded
     private Photo image;
 
-    @Embedded
+    @Enumerated(EnumType.STRING)
     private Manufacturer manufacturer;
 
     @PostPersist
@@ -37,11 +37,6 @@ public class Spec {
             SpecRepository.class
         );
         return specRepository;
-    }
-
-    public void register() {
-        //implement business logic here:
-
     }
 }
 //>>> DDD / Aggregate Root

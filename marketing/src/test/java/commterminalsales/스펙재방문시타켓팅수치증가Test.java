@@ -5,23 +5,16 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import commterminalsales.config.kafka.KafkaProcessor;
 import commterminalsales.domain.*;
-import java.util.concurrent.TimeUnit;
-import javax.inject.Inject;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.cloud.contract.verifier.messaging.MessageVerifier;
-import org.springframework.cloud.contract.verifier.messaging.boot.AutoConfigureMessageVerifier;
-import org.springframework.cloud.contract.verifier.messaging.internal.ContractVerifierMessage;
-import org.springframework.cloud.contract.verifier.messaging.internal.ContractVerifierMessaging;
-import org.springframework.cloud.contract.verifier.messaging.internal.ContractVerifierObjectMapper;
 import org.springframework.cloud.stream.messaging.Processor;
 import org.springframework.cloud.stream.test.binder.MessageCollector;
 import org.springframework.context.ApplicationContext;
@@ -33,7 +26,6 @@ import org.springframework.util.MimeTypeUtils;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@AutoConfigureMessageVerifier
 public class 스펙재방문시타켓팅수치증가Test {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(
@@ -50,15 +42,13 @@ public class 스펙재방문시타켓팅수치증가Test {
     private ApplicationContext applicationContext;
 
     @Autowired
-    ObjectMapper objectMapper;
-
-    @Autowired
-    private MessageVerifier<Message<?>> messageVerifier;
+    public RetargettingRepository repository;
 
     @Test
     @SuppressWarnings("unchecked")
     public void test0() {
         //given:
+        Retargetting entity = new Retargetting();
 
         entity.setId(1L);
         entity.setCustomerId("C001");
@@ -76,11 +66,19 @@ public class 스펙재방문시타켓팅수치증가Test {
         event.setProductId("P001");
         event.setOptions(new Object[] { "Option A", "Option B" });
 
-        ObjectMapper objectMapper = new ObjectMapper();
+        MarketingApplication.applicationContext = applicationContext;
+
+        ObjectMapper objectMapper = new ObjectMapper()
+            .configure(
+                DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
+                false
+            );
         try {
             String msg = objectMapper.writeValueAsString(event);
 
-            this.messageVerifier.send(
+            processor
+                .inboundTopic()
+                .send(
                     MessageBuilder
                         .withPayload(msg)
                         .setHeader(
@@ -88,34 +86,31 @@ public class 스펙재방문시타켓팅수치증가Test {
                             MimeTypeUtils.APPLICATION_JSON
                         )
                         .setHeader("type", event.getEventType())
-                        .build(),
-                    "commterminalsales"
+                        .build()
                 );
 
             //then:
 
-            Message<?> receivedMessage =
-                this.messageVerifier.receive(
-                        "commterminalsales",
-                        5000,
-                        TimeUnit.MILLISECONDS
-                    );
+            Message<String> received = (Message<String>) messageCollector
+                .forChannel(processor.outboundTopic())
+                .poll();
 
-            assertNotNull("Resulted event must be published", receivedMessage);
+            assertNotNull("Resulted event must be published", received);
 
             DiscountPolicyActivated outputEvent = objectMapper.readValue(
-                receivedMessage.getPayload(),
+                (String) received.getPayload(),
                 DiscountPolicyActivated.class
             );
 
-            LOGGER.info("Response received: {}", receivedMessage.getPayload());
+            LOGGER.info("Response received: {}", received.getPayload());
 
-            assertEquals(outputEvent.getId(), null);
-            assertEquals(outputEvent.getCustomerId(), "C001");
-            assertEquals(outputEvent.getProductId(), "P001");
+            assertEquals(String.valueOf(outputEvent.getId()), null);
+            assertEquals(String.valueOf(outputEvent.getCustomerId()), "C001");
+            assertEquals(String.valueOf(outputEvent.getProductId()), "P001");
         } catch (JsonProcessingException e) {
             // TODO Auto-generated catch block
-            assertTrue("exception", false);
+            e.printStackTrace();
+            assertTrue(e.getMessage(), false);
         }
     }
 }

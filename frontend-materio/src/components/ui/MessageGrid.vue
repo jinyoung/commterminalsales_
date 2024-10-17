@@ -116,15 +116,12 @@
 import { ref } from 'vue';
 import { useTheme } from 'vuetify';
 import BaseGrid from '../base-ui/BaseGrid.vue'
-import Message from '../Message.vue'
-import String from '../primitives/String.vue'
+
 
 export default {
     name: 'messageGrid',
     mixins:[BaseGrid],
     components:{
-        Message,
-        String,
     },
     data: () => ({
         path: 'messages',

@@ -36,13 +36,11 @@
             style="margin-top:10px; max-height:65vh;"
             class="wj-felx-grid"
         >
-            <wj-flex-grid-filter :filterColumns="['RowHeader','productId','options','customerId',]" />
+            <wj-flex-grid-filter :filterColumns="['RowHeader','comparations','customerId',]" />
             <wj-flex-grid-cell-template cellType="RowHeader" v-slot="cell">{{cell.row.index + 1}}</wj-flex-grid-cell-template>
-            <wj-flex-grid-column binding="productId" header="ProductId" width="2*" :isReadOnly="true" align="center" />
-            <wj-flex-grid-column binding="options" header="Options" width="2*" :isReadOnly="true" align="center" />
             <wj-flex-grid-column binding="customerId" header="CustomerId" width="2*" :isReadOnly="true" align="center" />
         </wj-flex-grid>
-        <StringDetailGrid label="Options" offline v-if="selectedRow" v-model="selectedRow.options"/>
+        <ComparationDetailGrid label="Comparations" offline v-if="selectedRow" v-model="selectedRow.comparations"/>
         <v-col>
             <v-dialog
                 v-model="openDialog"

@@ -16,8 +16,7 @@
         </v-card-title >        
 
         <v-card-text style="background-color: white;">
-            <String label="ProductId" v-model="value.productId" :editMode="editMode" :inputUI="''"/>
-            <String label="Options" v-model="value.options" :editMode="editMode" :inputUI="''"/>
+            <ComparationManager offline label="Comparations" v-model="value.comparations" :editMode="editMode" @change="change"/>
             <String label="CustomerId" v-model="value.customerId" :editMode="editMode" :inputUI="''"/>
         </v-card-text>
 

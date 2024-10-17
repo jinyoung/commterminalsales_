@@ -5,23 +5,16 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import commterminalsales.config.kafka.KafkaProcessor;
 import commterminalsales.domain.*;
-import java.util.concurrent.TimeUnit;
-import javax.inject.Inject;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.cloud.contract.verifier.messaging.MessageVerifier;
-import org.springframework.cloud.contract.verifier.messaging.boot.AutoConfigureMessageVerifier;
-import org.springframework.cloud.contract.verifier.messaging.internal.ContractVerifierMessage;
-import org.springframework.cloud.contract.verifier.messaging.internal.ContractVerifierMessaging;
-import org.springframework.cloud.contract.verifier.messaging.internal.ContractVerifierObjectMapper;
 import org.springframework.cloud.stream.messaging.Processor;
 import org.springframework.cloud.stream.test.binder.MessageCollector;
 import org.springframework.context.ApplicationContext;
@@ -33,7 +26,6 @@ import org.springframework.util.MimeTypeUtils;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@AutoConfigureMessageVerifier
 public class Pg에결제요청Test {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(
@@ -50,8 +42,5 @@ public class Pg에결제요청Test {
     private ApplicationContext applicationContext;
 
     @Autowired
-    ObjectMapper objectMapper;
-
-    @Autowired
-    private MessageVerifier<Message<?>> messageVerifier;
+    public PaymentRepository repository;
 }

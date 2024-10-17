@@ -25,23 +25,20 @@
                     <thead>
                         <tr>
                         <th>Id</th>
-                        <th>ProductId</th>
-                        <th>Options</th>
+                        <th>Comparations</th>
                         <th>CustomerId</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="(val, idx) in value" :key="val" @click="changeSelectedRow(val)" :style="val === selectedRow ? 'background-color: #f0f3ff;':''">
                             <td class="font-semibold">{{ idx + 1 }}</td>
-                            <td class="whitespace-nowrap" label="ProductId">{{ val.productId }}</td>
-                            <td class="whitespace-nowrap" label="Options">{{ val.options }}</td>
                             <td class="whitespace-nowrap" label="CustomerId">{{ val.customerId }}</td>
                             <Icon style="margin-top: 15px;" icon="mi:delete" @click="deleteRow(val)" />
                         </tr>
                     </tbody>
                 </v-table>
             </div>
-            <StringDetailGrid style="margin-top: 20px;" label="Options" offline v-if="selectedRow" v-model="selectedRow.options" :selectedRow="selectedRow"/>
+            <ComparationDetailGrid style="margin-top: 20px;" label="Comparations" offline v-if="selectedRow" v-model="selectedRow.comparations" :selectedRow="selectedRow"/>
         </div>
         <v-col>
             <v-dialog
@@ -95,10 +92,8 @@
                     </v-toolbar>
                     <v-card-text>
                         <div>
-                            <String label="ProductId" v-model="selectedRow.productId" :editMode="true"/>
-                            <String label="Options" v-model="selectedRow.options" :editMode="true"/>
                             <String label="CustomerId" v-model="selectedRow.customerId" :editMode="true"/>
-                            <StringDetailGrid label="Options" offline v-model="selectedRow.options" :editMode="true"/>
+                            <ComparationDetailGrid label="Comparations" offline v-model="selectedRow.comparations" :editMode="true"/>
                             <v-divider class="border-opacity-100 my-divider"></v-divider>
                             <v-layout row justify-end>
                                 <v-btn
@@ -121,19 +116,12 @@
 import { ref } from 'vue';
 import { useTheme } from 'vuetify';
 import BaseGrid from '../base-ui/BaseGrid.vue'
-import SpecComparation from '../SpecComparation.vue'
-import String from '../primitives/String.vue'
-import String from '../primitives/String.vue'
-import StringDetailGrid from './StringDetailGrid.vue'
+
 
 export default {
     name: 'specComparationGrid',
     mixins:[BaseGrid],
     components:{
-        SpecComparation,
-        String,
-        String,
-        StringDetailGrid,
     },
     data: () => ({
         path: 'specComparations',

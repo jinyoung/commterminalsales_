@@ -128,21 +128,12 @@
 import { ref } from 'vue';
 import { useTheme } from 'vuetify';
 import BaseGrid from '../base-ui/BaseGrid.vue'
-import Spec from '../Spec.vue'
-import String from '../primitives/String.vue'
-import Photo from '../vo/Photo.vue'
-import Manufacturer from '../Manufacturer.vue'
-import GetSpecDetail from '../GetSpecDetail.vue'
+
 
 export default {
     name: 'specGrid',
     mixins:[BaseGrid],
     components:{
-        Spec,
-        String,
-        Photo,
-        Manufacturer,
-        GetSpecDetail,
     },
     data: () => ({
         path: 'specs',

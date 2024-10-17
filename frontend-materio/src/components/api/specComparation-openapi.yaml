@@ -29,8 +29,7 @@ paths:
                 specComparations_json:
                   value:
                     - id: 1
-                      productId: A string
-                      options: value
+                      comparations: value
                       customerId: A string
           description: Get list of specComparations
       operationId: GetSpecComparation
@@ -45,8 +44,7 @@ paths:
               '1':
                 value:
                   id: 1
-                  productId: A string
-                  options: value
+                  comparations: value
                   customerId: A string
         required: true
       responses:
@@ -59,8 +57,7 @@ paths:
                 '1':
                   value:
                     id: 1
-                    productId: A string
-                    options: value
+                    comparations: value
                     customerId: A string
           description: Changed SpecComparation
       operationId: Post SpecComparation
@@ -88,8 +85,7 @@ paths:
                 '1':
                   value:
                     id: 1
-                    productId: A string
-                    options: value
+                    comparations: value
                     customerId: A string
           description: specComparations with specified id
       operationId: GetSpecComparationById
@@ -105,8 +101,7 @@ paths:
               '1':
                 value:
                   id: 1
-                  productId: A string
-                  options: value
+                  comparations: value
                   customerId: A string
         required: true
       parameters:
@@ -129,8 +124,7 @@ paths:
                 '1':
                   value:
                     id: 1
-                    productId: A string
-                    options: value
+                    comparations: value
                     customerId: A string
           description: Changed SpecComparation
       operationId: PatchSpecComparation
@@ -152,11 +146,8 @@ components:
         id:
           description: id of this SpecComparation
           type: integer
-        productId:
-          description: productId of this SpecComparation
-          type: string
-        options:
-          description: options of this SpecComparation
+        comparations:
+          description: comparations of this SpecComparation
           type: string
         customerId:
           description: customerId of this SpecComparation

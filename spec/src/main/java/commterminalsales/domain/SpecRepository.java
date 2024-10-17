@@ -10,5 +10,11 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 //<<< PoEAA / Repository
 @RepositoryRestResource(collectionResourceRel = "specs", path = "specs")
-public interface SpecRepository
-    extends PagingAndSortingRepository<Spec, Long> {}
+public interface SpecRepository extends PagingAndSortingRepository<Spec, Long> {
+    @Query(
+        value = "select spec " +
+        "from Spec spec " +
+        "where(:phoneColor is null or spec.phoneColor like %:phoneColor%) and "
+    )
+    Spec getSpecDetail(String phoneColor, Manufacturer manufacturer);
+}

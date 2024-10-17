@@ -21,15 +21,11 @@
 <script>
 
 import BaseEntity from './base-ui/BaseEntity.vue'
-import String from './primitives/String.vue'
-import Number from './primitives/Number.vue'
 
 export default {
     name: 'Retargetting',
     mixins:[BaseEntity],
     components:{
-        String,
-        Number,
     },
     
     data: () => ({

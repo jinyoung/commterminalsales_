@@ -5,10 +5,7 @@
         </v-card-title>
 
         <v-card-text>
-            <div>
-                <String label="ProductId" v-model="item.productId" :editMode="editMode" @change="change" />
-            </div>
-            <StringManager offline label="Options" v-model="item.options" :editMode="false" @change="change" />
+            <ComparationManager offline label="Comparations" v-model="item.comparations" :editMode="false" @change="change" />
             <div>
                 <String label="CustomerId" v-model="item.customerId" :editMode="editMode" @change="change" />
             </div>

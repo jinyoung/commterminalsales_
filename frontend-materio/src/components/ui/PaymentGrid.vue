@@ -122,15 +122,12 @@
 import { ref } from 'vue';
 import { useTheme } from 'vuetify';
 import BaseGrid from '../base-ui/BaseGrid.vue'
-import Payment from '../Payment.vue'
-import String from '../primitives/String.vue'
+
 
 export default {
     name: 'paymentGrid',
     mixins:[BaseGrid],
     components:{
-        Payment,
-        String,
     },
     data: () => ({
         path: 'payments',

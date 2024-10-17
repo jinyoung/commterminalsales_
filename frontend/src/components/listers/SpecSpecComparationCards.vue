@@ -104,8 +104,7 @@
             me.values = temp.data._embedded.specComparations;
             
             me.newValue = {
-                'productId': '',
-                'options': [],
+                'comparations': [],
                 'customerId': '',
             }
         },
