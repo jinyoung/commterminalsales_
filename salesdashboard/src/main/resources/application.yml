@@ -47,7 +47,7 @@ logging:
 
 api:
   url: 
-    salesdashboard: localhost:8087 
+    spec: localhost:8082 
     
 
 server:

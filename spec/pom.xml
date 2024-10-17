@@ -18,6 +18,7 @@
     <spring-cloud-stream.version>Germantown.SR1</spring-cloud-stream.version>
     <cucumber.version>6.8.1</cucumber.version>
     <spring-cloud-contract.version>2.1.1.RELEASE</spring-cloud-contract.version>
+  
   </properties>
   <dependencies>
     <dependency>
@@ -40,7 +41,7 @@
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.12</version>
+      <version>1.18.30</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -117,6 +118,7 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+
       </plugin>
       <plugin>
         <groupId>org.springframework.cloud</groupId>

@@ -1,16 +1,20 @@
 package commterminalsales.domain;
 
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.PostPersist;
+import javax.persistence.Table;
+
 import commterminalsales.SpecApplication;
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
-import javax.persistence.*;
 import lombok.Data;
 
 @Entity
 @Table(name = "Spec_table")
 @Data
-//<<< DDD / Aggregate Root
+// <<< DDD / Aggregate Root
 public class Spec {
 
     @Id
@@ -26,22 +30,21 @@ public class Spec {
     @Embedded
     private Photo image;
 
-    @Embedded
     private Manufacturer manufacturer;
 
     @PostPersist
-    public void onPostPersist() {}
+    public void onPostPersist() {
+    }
 
     public static SpecRepository repository() {
         SpecRepository specRepository = SpecApplication.applicationContext.getBean(
-            SpecRepository.class
-        );
+                SpecRepository.class);
         return specRepository;
     }
 
     public void register() {
-        //implement business logic here:
+        // implement business logic here:
 
     }
 }
-//>>> DDD / Aggregate Root
+// >>> DDD / Aggregate Root
