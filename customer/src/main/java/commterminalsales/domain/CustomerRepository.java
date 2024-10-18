@@ -17,5 +17,5 @@ public interface CustomerRepository
         "from Customer customer " +
         "where(:id is null or customer.id like %:id%)"
     )
-    Customer findByGetCustomer(String id);
+    Customer getCustomer(String id);
 }

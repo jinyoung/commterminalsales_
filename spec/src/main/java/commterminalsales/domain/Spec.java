@@ -41,10 +41,5 @@ public class Spec {
                 SpecRepository.class);
         return specRepository;
     }
-
-    public void register() {
-        // implement business logic here:
-
-    }
 }
 // >>> DDD / Aggregate Root

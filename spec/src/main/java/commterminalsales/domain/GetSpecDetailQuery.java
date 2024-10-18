@@ -4,4 +4,8 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class GetSpecDetailQuery {}
+public class GetSpecDetailQuery {
+
+    private String phoneColor;
+    private Manufacturer manufacturer;
+}

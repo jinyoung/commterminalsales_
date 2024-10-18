@@ -38,7 +38,7 @@ mvn spring-boot:run
 ## Test by API
 - spec
 ```
- http :8088/specComparations id="id" productId="productId" options="options" customerId="customerId" 
+ http :8088/specComparations id="id" comparations="comparations" customerId="customerId" 
  http :8088/specs id="id" spec="spec" phoneColor="phoneColor" phoneType="phoneType" image="image" manufacturer="manufacturer" 
 ```
 - order

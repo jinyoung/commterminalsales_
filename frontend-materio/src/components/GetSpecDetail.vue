@@ -6,6 +6,12 @@
     
         <v-card-text style="margin-top:-10px;">
             <v-row no-gutters style="margin: 15px 0px -10px -15px;">
+                <v-col style="max-width:140px;">
+                    <String class="attributes-list" label="PhoneColor" v-model="value.parameters.phoneColor" :editMode="editMode"/>
+                </v-col>
+                <v-col style="max-width:150px;">
+                    <Manufacturer style="margin-top: 0px; margin-left: 10px;" offline label="Manufacturer" v-model="value.parameters.manufacturer" :editMode="editMode" @change="change"/>
+                </v-col>
                 <v-col>
                     <v-btn class="gs-query-search-btn contrast-primary-text"
                         @click="search"

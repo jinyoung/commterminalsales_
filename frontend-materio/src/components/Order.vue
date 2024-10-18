@@ -24,17 +24,11 @@
 <script>
 
 import BaseEntity from './base-ui/BaseEntity.vue'
-import String from './primitives/String.vue'
-import String from './primitives/String.vue'
-import StringDetailGrid from './ui/StringDetailGrid.vue'
 
 export default {
     name: 'Order',
     mixins:[BaseEntity],
     components:{
-        String,
-        String,
-        StringDetailGrid,
     },
     
     data: () => ({

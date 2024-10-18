@@ -127,19 +127,12 @@
 import { ref } from 'vue';
 import { useTheme } from 'vuetify';
 import BaseGrid from '../base-ui/BaseGrid.vue'
-import Order from '../Order.vue'
-import String from '../primitives/String.vue'
-import String from '../primitives/String.vue'
-import StringDetailGrid from './StringDetailGrid.vue'
+
 
 export default {
     name: 'orderGrid',
     mixins:[BaseGrid],
     components:{
-        Order,
-        String,
-        String,
-        StringDetailGrid,
     },
     data: () => ({
         path: 'orders',

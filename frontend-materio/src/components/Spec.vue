@@ -23,17 +23,11 @@
 <script>
 
 import BaseEntity from './base-ui/BaseEntity.vue'
-import String from './primitives/String.vue'
-import Photo from './vo/Photo.vue'
-import Manufacturer from './Manufacturer.vue'
 
 export default {
     name: 'Spec',
     mixins:[BaseEntity],
     components:{
-        String,
-        Photo,
-        Manufacturer,
     },
     
     data: () => ({

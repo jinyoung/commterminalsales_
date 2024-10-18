@@ -41,12 +41,5 @@ public class Order {
         );
         return orderRepository;
     }
-
-    public void placeOrder() {
-        //implement business logic here:
-
-        OrderPlaced orderPlaced = new OrderPlaced(this);
-        orderPlaced.publishAfterCommit();
-    }
 }
 //>>> DDD / Aggregate Root

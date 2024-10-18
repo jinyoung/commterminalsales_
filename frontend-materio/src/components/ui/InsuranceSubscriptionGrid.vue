@@ -119,15 +119,12 @@
 import { ref } from 'vue';
 import { useTheme } from 'vuetify';
 import BaseGrid from '../base-ui/BaseGrid.vue'
-import InsuranceSubscription from '../InsuranceSubscription.vue'
-import String from '../primitives/String.vue'
+
 
 export default {
     name: 'insuranceSubscriptionGrid',
     mixins:[BaseGrid],
     components:{
-        InsuranceSubscription,
-        String,
     },
     data: () => ({
         path: 'insuranceSubscriptions',

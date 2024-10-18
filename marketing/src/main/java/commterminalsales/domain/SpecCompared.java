@@ -10,7 +10,6 @@ import lombok.*;
 public class SpecCompared extends AbstractEvent {
 
     private Long id;
-    private String productId;
-    private Object options;
+    private Object comparations;
     private String customerId;
 }

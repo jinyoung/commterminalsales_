@@ -23,7 +23,7 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Embedded
+    @Enumerated(EnumType.STRING)
     private BigDecimal amount;
 
     private String product;

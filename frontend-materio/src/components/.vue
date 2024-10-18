@@ -2,7 +2,7 @@
 
     <v-card outlined>
         <v-card-title>
-            판매현황등록
+            스펙비교저장
         </v-card-title>
 
         <v-card-text>
@@ -13,9 +13,9 @@
             <v-btn
                     color="deep-purple lighten-2"
                     text
-                    @click="판매현황등록"
+                    @click="스펙비교저장"
             >
-                판매현황등록
+                스펙비교저장
             </v-btn>
             
             <v-btn
@@ -33,7 +33,7 @@
 <script>
 
 export default {
-    name: '판매현황등록Command',
+    name: '스펙비교저장Command',
     components:{
     },
     props: {},
@@ -46,8 +46,8 @@ export default {
     watch: {
     },
     methods: {
-        판매현황등록() {
-            this.$emit('판매현황등록', this.value);
+        스펙비교저장() {
+            this.$emit('스펙비교저장', this.value);
         },
         close() {
             this.$emit('closeDialog');

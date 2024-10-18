@@ -67,8 +67,7 @@
             headers: 
                 [
                     { text: "id", value: "id" },
-                    { text: "productId", value: "productId" },
-                    { text: "options", value: "options" },
+                    { text: "comparations", value: "comparations" },
                     { text: "customerId", value: "customerId" },
                 ],
             specComparation : [],
@@ -87,8 +86,7 @@
             this.values = temp.data._embedded.speccomparations;
 
             this.newValue = {
-                'productId': '',
-                'options': [],
+                'comparations': [],
                 'customerId': '',
             }
         },

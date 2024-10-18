@@ -20,13 +20,11 @@
 <script>
 
 import BaseEntity from './base-ui/BaseEntity.vue'
-import String from './primitives/String.vue'
 
 export default {
     name: 'Customer',
     mixins:[BaseEntity],
     components:{
-        String,
     },
     
     data: () => ({

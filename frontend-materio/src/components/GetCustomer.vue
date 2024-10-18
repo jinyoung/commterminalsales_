@@ -25,11 +25,9 @@
 </template>
 
 <script>
-import String from './primitives/String.vue'
     export default {
         name: 'GetCustomer',
         components:{
-            String,
         },
         props: {},
         data: () => ({

@@ -117,17 +117,12 @@
 import { ref } from 'vue';
 import { useTheme } from 'vuetify';
 import BaseGrid from '../base-ui/BaseGrid.vue'
-import Customer from '../Customer.vue'
-import String from '../primitives/String.vue'
-import GetCustomer from '../GetCustomer.vue'
+
 
 export default {
     name: 'customerGrid',
     mixins:[BaseGrid],
     components:{
-        Customer,
-        String,
-        GetCustomer,
     },
     data: () => ({
         path: 'customers',
